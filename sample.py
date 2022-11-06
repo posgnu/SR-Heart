@@ -1,5 +1,9 @@
 from denoising_diffusion_pytorch import Unet, GaussianDiffusion, Trainer
 import argparse
+import torchvision.transforms as T
+import torch
+
+
 
 def parse_opt():
     parser = argparse.ArgumentParser()
@@ -41,3 +45,9 @@ if __name__ == "__main__":
     trainer.load(opt.weights)
 
     sampled_images = diffusion.sample(batch_size = opt.sample_num)
+
+    transform = T.ToPILImage()
+    img = transform(torch.cat([image for image in sampled_images], dim=2))
+    img.save("sample.png")
+
+

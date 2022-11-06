@@ -8,5 +8,5 @@ accelerate launch train.py
 
 ## Sampleing
 ```sh
-python sample.py --weights 30 --sample_num 8
+python sample.py --weights 30 --sample-num 4
 ```
