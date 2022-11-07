@@ -4,7 +4,7 @@ from denoising_diffusion_pytorch import Unet, GaussianDiffusion, Trainer
 if __name__ == "__main__":
 
     model = Unet(
-        channels=1,
+        channels=3,
         dim = 64,
         dim_mults = (1, 2, 4, 8)
     ).cuda()
@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
     trainer = Trainer(
         diffusion,
-        'data',
+        'data/LV',
         train_batch_size = 32,
         train_lr = 8e-5,
         train_num_steps = 700000,         # total training steps, [700000] 
