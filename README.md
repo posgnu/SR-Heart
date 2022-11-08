@@ -1,4 +1,4 @@
-# Super resolution imaging on CMR heart image
+# Generating synthetic CMR heart images
 
 ## Training
 ```sh
