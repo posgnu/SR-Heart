@@ -1,7 +1,17 @@
 from denoising_diffusion_pytorch import Unet, GaussianDiffusion, Trainer
+import argparse
 
+def parse_opt():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--weights", type=str, default="1")
+
+
+    opt = parser.parse_args()
+
+    return opt
 
 if __name__ == "__main__":
+    opt = parse_opt()
 
     model = Unet(
         channels=3,
@@ -27,7 +37,6 @@ if __name__ == "__main__":
         ema_decay = 0.995,                # exponential moving average decay
         amp = False,                        # turn on mixed precision
     )
+    trainer.lo0ad(opt.weights)
 
     trainer.train()
-
-    sampled_images = diffusion.sample(batch_size = 4)
